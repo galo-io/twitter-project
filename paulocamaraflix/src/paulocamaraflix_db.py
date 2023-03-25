@@ -12,7 +12,7 @@ sql = sqlConnector(username=os.getenv('SQL_USER')
 
 schema = {
     'date': 'date'
-  , 'first_tweet_id': 'bigint'
+  , 'first_tweet_id': 'char(255)'
   , 'genres': 'char(255)'
   , 'protagonist_name': 'char(255)'
   , 'protagonist_surname': 'char(255)'
@@ -27,3 +27,14 @@ schema = {
 }
 
 sql.createDataBase('paulocamaraflix', schema)
+
+
+schema = {
+    'date': 'date'
+  , 'tweet_id': 'char(255)'
+  , 'movie_tweet_id': 'char(255)'
+  , 'generated_review': 'mediumtext'
+  
+}
+
+sql.createDataBase('galocritica', schema)

@@ -1,0 +1,9 @@
+Elabore uma crítica fictícia como se fosse de um grande site de filmes sobre um filme com as seguintes características:
+Gênero: {genres}
+Protagonista: {protagonist_name} {protagonist_surname}, {occupations} {occupation_complements}
+Coadjuvantes: {first_famous_people} e {second_famous_people}
+Temas: {first_theme} e {second_theme}
+
+Você não deve descrever o filme, apenas ressaltar aspectos, como atuação do personagens, qualidade da fotografia, direção, roteiro, som, edição e outros aspectos que você pode escolher e inventar. Você também não deverá citar o nome do filme e nenhuma passagem em nenhum momento.
+
+Sua crítica pode ser positiva, neutra ou negativa. Você tem total liberdade para inventar qualquer julgamento de valor sobre o aspecto técnico do filme. Lembre que você não deve mencionar o título do filme.

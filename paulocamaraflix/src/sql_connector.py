@@ -65,12 +65,12 @@ class sqlConnector():
         values_list = []
         for columns, values in json.items():
             columns_list.append(columns)
-            values_list.append(str(values))
+            values_list.append('"{}"'.format(values))
         
         columns = ','.join(columns_list)
         values = ','.join(values_list)
         with self._engine.connect() as conn:
-            conn.execute(text(f'INSERT INTO {self._database}.{table_name} ({columns}) VALUES ({values})'))
+            conn.execute(text(f'INSERT INTO {self._database}.{table_name} ({columns}) VALUES ({values});'))
             conn.commit()
 
     def showDatabases(self):
@@ -82,3 +82,14 @@ class sqlConnector():
         with self._engine.connect() as conn:
             conn.execute(text(f"DROP TABLE {self._database}.{table_name}"))
             conn.commit()
+
+    def importQuery(self, filename):
+        """"""
+        return Path('./queries/{0}.txt'.format(filename)).read_text(encoding='UTF-8')
+
+    def queryData(self, query):
+        import pandas as pd
+        with self._engine.connect() as conn:
+            result_proxy = conn.execute(text(query))
+            results_dict = [r._asdict() for r in result_proxy]
+            return results_dict

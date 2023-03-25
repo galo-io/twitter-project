@@ -4,6 +4,9 @@ config.json
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# Logs
+*.log
+
 # Environments
 .env
 .venv
@@ -16,3 +19,5 @@ venv.bak/
 #cache
 .pyc
 __pycache__/
+
+debug/

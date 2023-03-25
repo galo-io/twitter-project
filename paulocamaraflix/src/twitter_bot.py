@@ -10,7 +10,7 @@ load_dotenv()
 
 class twitterBot():
   
-    def __init__(self):
+    def __init__(self, consumer_key, consumer_secret, bearer_token, access_token, access_token_secret):
         """
         Initializes an API client that authorizes our connection with Twitter.
         Also updates the last connection.
@@ -24,11 +24,11 @@ class twitterBot():
         Since:
             02-2023
         """
-        self.client = tweepy.Client(consumer_key=os.getenv('TWEEPY_CONSUMER_KEY_PCF')
-                     , consumer_secret=os.getenv('TWEEPY_CONSUMER_SECRET_PCF')
-                     , bearer_token=os.getenv('TWEEPY_BEARER_TOKEN_PCF')
-                     , access_token=os.getenv('TWEEPY_ACCESS_TOKEN_PCF')
-                     , access_token_secret=os.getenv('TWEEPY_ACCESS_TOKEN_SECRET_PCF')
+        self.client = tweepy.Client(consumer_key=consumer_key
+                     , consumer_secret=consumer_secret
+                     , bearer_token=bearer_token
+                     , access_token=access_token
+                     , access_token_secret=access_token_secret
                      , wait_on_rate_limit=True)
         self.last_connection = datetime.datetime.now()
         self._logger = tp_logger.logConstructor(file_name='twitter').createLogger()
@@ -44,14 +44,15 @@ class twitterBot():
             text: string without spurious characters
         """
 
-    def tweet(self, text):
+    def tweet(self, text, comment_to_tweet_id=None):
         """
         Tweets a string of text. If the length of text 280, a thread is created using the 
-        long_text_into_tweets function.
+        long_text_into_tweets function. To comment on an existint tweet, one should pass the
+        comment_to_tweet_id argument.
 
         Inputs:
             text = string of text
-
+            comment_to_tweet_id = tweet id to comment on
         Outputs:
             A tweet from the username logged into the bot.
 
@@ -67,7 +68,7 @@ class twitterBot():
             list_text = utils.stringUtils().turn_long_text_into_subtexts(text, subtext_length=280)
             for i, tweets in enumerate(list_text):
                 if i == 0:
-                    tweet_id = self.client.create_tweet(text=tweets).data['id']
+                    tweet_id = self.client.create_tweet(text=tweets, in_reply_to_tweet_id=comment_to_tweet_id).data['id']
                     first_id = tweet_id
                     self._logger.info(f'Tweet index {i+1} - Tweet ID: {tweet_id}')
                     time.sleep(10)

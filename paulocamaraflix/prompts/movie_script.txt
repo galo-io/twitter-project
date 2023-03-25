@@ -1,9 +1,9 @@
-Desenvolva um roteiro de um filme do gênero {0} a partir das informações fornecidas. O filme deve ter um título criativo e será escrito em 4 parágrafos (início, meio, clímax e fim) e deverá ter um plot twist detalhado no parágrafo do clímax:
-Protagonista: {1} {2}
-Descrição do Protagonista: {3} {4}
-Característica do Protagonista: {5}
-Coadjuvante: {6}
-Antagonista: {7}
-Assunto: {8} e {9}
+Desenvolva um roteiro de um filme do gênero {genres} a partir das informações fornecidas. O filme deve ter um título criativo e será escrito em 4 parágrafos (início, meio, clímax e fim) e deverá ter um plot twist detalhado no parágrafo do clímax:
+Protagonista: {protagonist_name} {protagonist_surname}
+Descrição do Protagonista: {occupations} {occupation_complements}
+Característica do Protagonista: {adjectives}
+Coadjuvante: {first_famous_people}
+Antagonista: {second_famous_people}
+Assunto: {first_theme} e {second_theme}
 
 O Roteiro não terá a indicação início de parágrafo e deve ser um texto contínuo
