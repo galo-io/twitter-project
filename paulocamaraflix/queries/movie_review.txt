@@ -1,0 +1,15 @@
+SELECT first_tweet_id as movie_tweet_id
+     , genres
+     , protagonist_name
+     , protagonist_surname
+     , occupations
+     , occupation_complements
+     , first_famous_people
+     , second_famous_people
+     , first_theme
+     , second_theme
+FROM tp.paulocamaraflix
+WHERE date = (
+    SELECT MAX(date)
+    FROM tp.paulocamaraflix
+);
