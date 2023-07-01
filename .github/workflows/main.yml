@@ -19,9 +19,9 @@ jobs:
       - name: Ir para paulocamaraflix/
         run: cd paulocamaraflix/
       - name: Rodar paulocamaraflix
-        run: python paulocamaraflix/main.py
+        run: python main.py
       - name: Rodar galo-critica
-        run: python paulocamaraflix/main_review.py
+        run: python main_review.py
       - name: Upload file as artifact
         uses: actions/upload-artifact@v3
         with:
