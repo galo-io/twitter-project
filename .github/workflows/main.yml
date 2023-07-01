@@ -22,8 +22,3 @@ jobs:
         run: python main.py
       - name: Rodar galo-critica
         run: python main_review.py
-      - name: Upload file as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: job-result
-          path: file.txt
