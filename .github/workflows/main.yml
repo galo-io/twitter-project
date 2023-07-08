@@ -1,0 +1,24 @@
+name: "Postar filme e crítica"
+on:
+  schedule:
+    - cron: '30 18 * * *'
+
+jobs:
+  python-job:
+    name: "Python job"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10.6'
+      - name: Instalar ambiente
+        run: pip install -r requirements.txt
+      - name: Ir para paulocamaraflix/
+        run: cd paulocamaraflix/
+      - name: Rodar paulocamaraflix
+        run: python main.py
+      - name: Rodar galo-critica
+        run: python main_review.py
