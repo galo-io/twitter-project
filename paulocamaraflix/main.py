@@ -20,7 +20,7 @@ def main():
     
     # Get the movie params output
     response_params = prompt_generator.get_response(prompt='movie_script', tokens = 1000)
-    response = movies_params['generated_prompt']
+    response = response_params['generated_prompt']
         
     tweet_id = bot.tweet(text = response, comment_to_tweet_id=None)
     

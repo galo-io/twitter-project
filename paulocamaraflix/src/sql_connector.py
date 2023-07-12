@@ -85,6 +85,7 @@ class sqlConnector():
 
     def importQuery(self, filename):
         """"""
+        from pathlib import Path
         return Path('./queries/{0}.txt'.format(filename)).read_text(encoding='UTF-8')
 
     def queryData(self, query):
