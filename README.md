@@ -7,8 +7,8 @@ Autores:
     @marcuscardona
 
 ## Indíce
-- [Projetos](#projetos)
-- [Colaboradores](#colaboradores)
+- [Paulo Câmara Flix](#Paulo-Câmara-Flix)
+- [Colaboradores](#🤝-colaboradores)
  
 <!-- Projetos -->
 ## Paulo Câmara Flix

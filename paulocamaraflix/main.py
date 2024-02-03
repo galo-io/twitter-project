@@ -11,7 +11,6 @@ from src.rand_prompt import randomize_params, read_file
 sys.path.append("../../")
 from llm_connect.interface import get_response
 
-
 def main():
     
     load_dotenv()
