@@ -3,7 +3,9 @@ import os
 from pathlib import Path
 import random
 import openai
+
 from . import tp_logger
+from .rand_prompt import randomize_params
 
 class openaiPrompt():
 
@@ -35,68 +37,18 @@ class openaiPrompt():
         """
         # Load the movie_script prompt
         prompt = self.read_prompt(prompt)
+        genre, protagonist_name, protagonist_surname, occupation, occupation_complement, adjective, first_famous, second_famous, first_theme, second_theme = randomize_params()
         
-        # Random choice from the parameters on prompt if not passed on the params dictionary
-        try:
-            genres = params['genre']
-        except:
-            genres=random.choice(self.read_prompt('genres').split('\n'))
-        
-        try:
-            protagonist_name=params['protagonist_name']
-        except:
-            protagonist_name=random.choice(self.read_prompt('protagonist_name').split('\n'))
-        
-        try:
-            protagonist_surname=params['protagonist_surname']
-        except:
-            protagonist_surname=random.choice(self.read_prompt('protagonist_surname').split('\n'))
-        
-        try:
-            occupations=params['occupations']
-        except:
-            occupations=random.choice(self.read_prompt('occupations').split('\n'))
-        
-        try:
-            occupation_complements = params['occupation_complements']    
-        except:
-            occupation_complements=random.choice(self.read_prompt('occupation_complements').split('\n'))          
-        
-        try:
-            adjectives=params['adjectives']
-        except:
-            adjectives=random.choice(self.read_prompt('adjectives').split('\n'))
-        
-        try:
-            first_famous_people=params['first_famous_people']
-        except:
-            first_famous_people=random.choice(self.read_prompt('famous_people').split('\n'))
-        
-        try:
-            second_famous_people=params['second_famous_people']
-        except:
-            second_famous_people=random.choice(self.read_prompt('famous_people').split('\n'))
-        
-        try:
-            first_theme=params['first_theme']
-        except:
-            first_theme=random.choice(self.read_prompt('themes').split('\n'))
-        
-        try:
-            second_theme=params['second_theme']
-        except:
-            second_theme=random.choice(self.read_prompt('themes').split('\n'))
-       
         # Format Query
         query = prompt.format(
-            genres=genres
+            genres=genre
           , protagonist_name=protagonist_name
           , protagonist_surname=protagonist_surname
-          , occupations=occupations
-          , occupation_complements=occupation_complements
-          , adjectives=adjectives
-          , first_famous_people=first_famous_people
-          , second_famous_people=second_famous_people
+          , occupations=occupation
+          , occupation_complements=occupation_complement
+          , adjectives=adjective
+          , first_famous_people=first_famous
+          , second_famous_people=second_famous
           , first_theme=first_theme
           , second_theme=second_theme
         )
@@ -116,14 +68,14 @@ class openaiPrompt():
              
         # Transform the parameters in list
         output = {
-          'genres':genres
+          'genres':genre
         , 'protagonist_name':protagonist_name
         , 'protagonist_surname':protagonist_surname
-        , 'occupations':occupations
-        , 'occupation_complements':occupation_complements
-        , 'adjectives':adjectives
-        , 'first_famous_people':first_famous_people
-        , 'second_famous_people':second_famous_people
+        , 'occupations':occupation
+        , 'occupation_complements':occupation_complement
+        , 'adjectives':adjective
+        , 'first_famous_people':first_famous
+        , 'second_famous_people':second_famous
         , 'first_theme':first_theme
         , 'second_theme':second_theme
         , 'generated_prompt':generated_prompt
