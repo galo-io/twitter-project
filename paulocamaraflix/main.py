@@ -5,14 +5,10 @@ from dotenv import load_dotenv
 
 from src.twitter_bot import twitterBot
 from src.rand_prompt import randomize_params, read_file
+from llm_connect.interface import get_response
 # from src.sql_connector import sqlConnector
 
-# Hack for local import
-sys.path.append("../../")
-from llm_connect.interface import get_response
-
 def main():
-    
     load_dotenv()
     
     # Instantiate the Bot
