@@ -2,8 +2,8 @@
 # Shell script to run bot with `cron`
 cd ~
 cd projects/twitter-project/
-source venv/bin/activate
+source env/bin/activate
 cd paulocamaraflix
-python ./main.py
+python3 ./main.py
 deactivate
 cd ~
