@@ -1,0 +1,3 @@
+[submodule "paulocamaraflix/llm_connect"]
+	path = paulocamaraflix/llm_connect
+	url = https://github.com/galo-io/llm_connect.git
