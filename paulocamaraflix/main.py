@@ -1,5 +1,6 @@
 import os
 import sys
+import random
 
 from dotenv import load_dotenv
 
@@ -37,19 +38,16 @@ def main():
     )
 
     # Get the movie params output
-    max_tries = 5
-    tries = 0
-    while tries < max_tries:
-        response = get_response(prompt)
-        if response is None:
-            print("WARNING: could not get response from LLM. Trying again...")
-            tries += 1
-        else:
-            break
+    # response = get_response(prompt)
+    # if response is None:
+    #     print(f"ERROR: could not get response from LLM tries.")
+    #     exit(1)
 
-    if response is None:
-        print(f"ERROR: could not get response from LLM after {max_tries} tries.")
-        exit(1)
+    # JVR update: a temporary solution to post premade movies
+    movies = os.listdir("premade_movies/")
+    movie = random.choice(movies)
+    with open(movie, "r") as f: response = f.read()
+    os.remove(f"premade_movies/{movie}")
 
     tweet_id = bot.tweet(text=response, comment_to_tweet_id=None)
     
